@@ -12,7 +12,7 @@
                 />
             </label>
             <xpath expr="//notebook//list//field[@name='sequence']" position="before">
-                <field name="account_id" column_invisible="True" />
+                <field name="account_id" column_invisible="True" /> <!-- FIX UNIT TEST -->
             </xpath>
         </field>
     </record>
