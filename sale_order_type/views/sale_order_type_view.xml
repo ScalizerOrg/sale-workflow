@@ -6,7 +6,7 @@
             <form string="Type">
                 <sheet>
                     <div class="oe_button_box" name="button_box" />
-                    <field name="active" invisible="1" />
+                    <field name="active" invisible="1" /> <!-- FIX UNIT TEST -->
                     <widget
                         name="web_ribbon"
                         title="Archived"
@@ -21,13 +21,13 @@
                     </div>
                     <group>
                         <group>
-                            <field name="warehouse_id" invisible="1" />
+                            <field name="warehouse_id" invisible="1" /> <!-- FIX UNIT TEST -->
                             <field
                                 name="warehouse_id"
                                 options="{'no_create': True}"
                                 groups="stock.group_stock_multi_warehouses"
                             />
-                            <field name="company_id" invisible="1" />
+                            <field name="company_id" invisible="1" /> <!-- FIX UNIT TEST -->
                             <field
                                 name="company_id"
                                 groups="base.group_multi_company"
