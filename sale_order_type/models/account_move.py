@@ -50,7 +50,6 @@ class AccountMove(models.Model):
 
     @api.depends("sale_type_id")
     def _compute_journal_id(self):
-
         res = super()._compute_journal_id()
         for move in self.filtered("sale_type_id.journal_id"):
             move.journal_id = move.sale_type_id.journal_id
