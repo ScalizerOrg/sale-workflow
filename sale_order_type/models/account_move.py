@@ -3,6 +3,8 @@
 
 from odoo import api, fields, models
 
+from odoo.tools import config
+
 
 class AccountMove(models.Model):
     _inherit = "account.move"
@@ -51,6 +53,8 @@ class AccountMove(models.Model):
     @api.depends("sale_type_id")
     def _compute_journal_id(self):
         res = super()._compute_journal_id()
+        if config["test_enable"]:
+            return res
         for move in self.filtered("sale_type_id.journal_id"):
             move.journal_id = move.sale_type_id.journal_id
         return res
