@@ -3,7 +3,6 @@
 
 from odoo import api, fields, models
 
-from odoo.tools import config
 
 class AccountMove(models.Model):
     _inherit = "account.move"
@@ -36,8 +35,8 @@ class AccountMove(models.Model):
                 sale_type = (
                     record.partner_id.with_company(record.company_id).sale_type
                     or record.partner_id.commercial_partner_id.with_company(
-                        record.company_id
-                    ).sale_type
+                    record.company_id
+                ).sale_type
                 )
                 if sale_type:
                     record.sale_type_id = sale_type
@@ -49,7 +48,7 @@ class AccountMove(models.Model):
             move.invoice_payment_term_id = move.sale_type_id.payment_term_id
         return res
 
-    @api.depends(lambda self: ('sale_type_id') if not config["test_enable"] else ())
+    @api.depends("sale_type_id")
     def _compute_journal_id(self):
 
         res = super()._compute_journal_id()
